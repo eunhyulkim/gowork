@@ -1,0 +1,6 @@
+{
+  "defaultTemplate": "Component",
+  "defaultTargetDirectory": "src/components",
+  "suffix": "jsx",
+  "templates": {}
+}
