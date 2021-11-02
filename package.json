@@ -6,6 +6,12 @@
     "email": "valhalla.host@gmail.com",
     "url": "https://creative-project.netlify.app"
   },
+  "keywords": [
+    "template",
+    "generate",
+    "auto complete",
+    "boilerplate"
+  ],
   "homepage": "https://github.com/eunhyulkim/gowork",
   "bugs": {
     "url": "https://github.com/eunhyulkim/gowork",
@@ -23,7 +29,7 @@
   },
   "main": "./src/index.js",
   "private": false,
-  "version": "0.1.0",
+  "version": "0.1.2",
   "license": "MIT",
   "devDependencies": {},
   "dependencies": {
