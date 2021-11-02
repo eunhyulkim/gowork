@@ -1,5 +1,6 @@
 {
   "name": "gowork",
+  "description": "CLI program that uses templates to make the desired file easier.",
   "author": {
     "name": "eunhyul kim",
     "email": "valhalla.host@gmail.com",
@@ -22,7 +23,7 @@
   },
   "main": "./src/index.js",
   "private": false,
-  "version": "0.0.1",
+  "version": "0.1.0",
   "license": "MIT",
   "devDependencies": {},
   "dependencies": {

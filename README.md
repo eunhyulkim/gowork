@@ -1,46 +1,101 @@
-# Getting Started with Create React App
+# Gowork
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Gowork is CLI program that uses templates to make the desired file easier. If you set up templates for frequently created files, you can create files by inserting only the necessary values into the CLI.
 
-## Available Scripts
+## How to use?
 
-In the project directory, you can run:
+### `install`
 
-### `yarn start`
+```
+$ yarn install --dev gowork
+$ gowork init
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### `create template`
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+If you used the init command, you would have created a **templates directory**. The **Component.jsx template** will basically be contained.
 
-### `yarn test`
+```
+function $0($1) {
+  return /$2:return data/;
+}
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+**$0** means the name of the file. From **$1** onwards, it corresponds to the property in order. The same number may be more than one. There is no number limit.
 
-### `yarn build`
+Basically, it takes the form of **$N**, but if you want to display the meaning of a particular property, you can use the form **/$N:description/**. It is convenient when using the CLI.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### `gowork using command`
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```
+$ gowork <template> <targetDirectory> <fileName> <$1> ...
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+What matters is the order. Template name excluding suffix, counterpart address-based directory to create new files, file name, Property1, Property2... For example, it is as follows.
 
-### `yarn eject`
+```
+e.g) $ gowork Component src/components Button title color
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+This is almost everything!
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### `gowork using CLI`
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+If you follow the order well, the CLI will take good care of you even if you skip a few of the elements behind you. If you didn't skip the values that would go in the middle, there's nothing to worry about.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+```
+$ gowork Template1 src/components Button first_param
+$ Please choose which template to use
+> Template 1
+  Template 2
+```
 
-## Learn More
+```
+$ gowork
+$ Please input for second_parameter : _
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### `configuration`
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+1. **defaultTemplate**: \<templateName>
+
+   Specifies the template to use by default. When using the **-d flag** together, the default template and the default target directory are used.
+
+   ```
+   $ gowork -d Button <param1> ...
+   ```
+
+2. **defaultTargetDirectory**: \<relativeDirectoryPath>
+
+   Specifies the target directory to use by default. When using the **-d flag** together, the default template and the default target directory are used.
+
+   ```
+   $ gowork -d Button <param1> ...
+   ```
+
+3. **templates**: {[templateName]: [targetDirectory]}
+
+   It's in the form of json format. Use the template name as the key, and specify the target directory for the template as the value.
+
+   If a command is used without designating a target directory, it is used if there is a predetermined target directory.
+
+   ```
+   $ gowork Button
+   ? Please input which file name to create : _
+   ```
+
+## Update Plan
+
+Currently, the basic suffix of the file to be generated may be specified through the configuration file's suffix option. Or you have to enter it yourself. It plans to change it to be created based on the suffix of the template file.
+
+## Contribute
+
+It is managed in the repository below.
+
+```
+https://github.com/eunhyulkim/gowork
+```
+
+I want to provide various basic templates to users. I want to create templates not only for react components, but also for unittest or many frequently used patterns.
+
+If you have any other problems, please email valhalla.host@gmail.com.

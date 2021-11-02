@@ -247,6 +247,11 @@ function createFile(data, options, config) {
 
 export async function cli(args) {
   const config = await parseConfig();
+
+  if (args[2] === 'init') {
+    return;
+  }
+
   let options = await parseArgumentsIntoOptions(args, config);
   options = await promptForMissingOptions(options, config);
   const data = convertPlaceHolderToProperty(options);
